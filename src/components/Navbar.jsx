@@ -1,81 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import logoimg from "../assets/gethyped.jpg";
 
 import heroImg from "../assets/hero.png";
+import Button from "./FancyHoverButton";
+import SpecialButton from "./SpecialButton";
 
 const Navbar = () => {
+  const [show, setShow] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // prevent jitter
+      if (Math.abs(currentScrollY - lastScrollY) < 10) return;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 80) {
+        setShow(false); // scrolling down
+      } else {
+        setShow(true); // scrolling up
+      }
+
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   return (
-    <div className="navbar  shadow-sm">
+    <div
+      className={`navbar fixed top-2 left-auto max-w-[2000px] mx-auto z-50 flex justify-between 
+      transition-transform duration-300 ease-in-out
+      ${show ? "translate-y-0" : "-translate-y-full"}
+      `}
+    >
       <img className="h-10" src={logoimg} alt="Logo" />
-      {/* <img src={heroImg} className="base" width="170" height="179" alt="" /> */}
-      <div className="flex-none">
-        <div className="dropdown dropdown-end">
-          <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
-            <div className="indicator">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-                />{" "}
-              </svg>
-              <span className="badge badge-sm indicator-item">8</span>
-            </div>
-          </div>
-          <div
-            tabIndex={0}
-            className="card card-compact dropdown-content bg-base-100 z-1 mt-3 w-52 shadow"
-          >
-            <div className="card-body">
-              <span className="text-lg font-bold">8 Items</span>
-              <span className="text-info">Subtotal: $999</span>
-              <div className="card-actions">
-                <button className="btn btn-primary btn-block">View cart</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="dropdown dropdown-end">
-          <div
-            tabIndex={0}
-            role="button"
-            className="btn btn-ghost btn-circle avatar"
-          >
-            <div className="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-              />
-            </div>
-          </div>
-          <ul
-            tabIndex="-1"
-            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-          >
-            <li>
-              <a className="justify-between">
-                Profile
-                <span className="badge">New</span>
-              </a>
-            </li>
-            <li>
-              <a>Settings</a>
-            </li>
-            <li>
-              <a>Logout</a>
-            </li>
-          </ul>
-        </div>
+
+      <div className="flex bg-amber-50 rounded-xl h-8 overflow-hidden gap-0.5">
+        <SpecialButton className="h-auto w-fit p-6 text-sm text-start" />
+        <SpecialButton />
+        <SpecialButton />
+        <SpecialButton />
       </div>
+
+      <Button
+        children="Get Results"
+        className="text-[14px]"
+        textcolor="text-black"
+        bgColor="bg-[#fcb8fa]"
+        iconColor="text-red-500"
+      />
     </div>
   );
 };

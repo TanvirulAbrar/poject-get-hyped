@@ -3,6 +3,14 @@ import Navbar from "../components/Navbar";
 import logo from "../assets/gethyped.jpg";
 import { motion } from "framer-motion";
 import roundedImg from "../assets/roundedText.png";
+import StackedCards from "./home/StackedCards";
+import CustomShape from "./home/CustomShape";
+import VideoCard from "./home/VideoCard";
+import HeroCard from "./home/HeroCard";
+import FancyHoverButton from "../components/FancyHoverButton";
+import { FaArrowRight } from "react-icons/fa";
+
+// import Shape from "./home/CustomShape";
 const Home = () => {
   const logos = [
     { icon: "layers", name: "Layers" },
@@ -11,103 +19,97 @@ const Home = () => {
     { icon: "view_agenda", name: "Catalog" },
     { icon: "bubble_chart", name: "Quotient" },
   ];
+
   return (
-    <div className="bg-[#faf4ec] ">
+    <div className=" roboto max-w-[2000px] mx-auto ">
       <Navbar />
-      <div className="">get hyped. Get Noticed Get Results.</div>
-      <div className="">Klaar met gokken op content die niets oplevert?</div>
-      {/* card */}
-      <div className="flex">
-        <div className="rounded-2xl bg-blue-400 w-50 h-60 p-5 flex flex-col justify-between">
-          <div className="text-2xl font-bold">10M+</div>
-          <div className="text-xl">
-            <div className="">Organische views</div>
-            <div className=" underline"></div>
-            <div className="text-xs">Groeidoor slimme content</div>
-          </div>
+      {/* hero */}
+      <section className="p-8 max-sm:p-2">
+        <div className="text-[clamp(1rem,16vh,8rem)] font-semibold  leading-[clamp(1.2rem,15vh,8rem)] tracking-tight  mt-20">
+          Get Hyped. Get <br /> Noticed Get Results.
         </div>
-      </div>
+        <div className="text-[clamp(1rem,4vh,2rem)] my-2 lg:my-8 font-semibold">
+          Klaar met gokken op content <br /> die niets oplevert?
+        </div>
+        {/* card */}
+        <div className="flex w-full bg-amber-800 justify-between">
+          <HeroCard></HeroCard>
+          <HeroCard></HeroCard>
+          <HeroCard></HeroCard>
+          <HeroCard></HeroCard>
+        </div>
+      </section>
       {/* dkjf */}
-      <section>
-        <div className="">
-          Wij maken content die opvalt . Die blijft hangen. Die jouw doelgroep
-          raakt en jouw merk in beweging brengt. Snel, krachitg en energiek.
+      <section className=" p-5 ">
+        <div className="text-[clamp(1rem,10vh,3rem)] lg:p-19 lg:pl-30  font-bold">
+          Wij maken content die opvalt . Die <br /> blijft hangen. Die jouw
+          doelgroep <br />
+          raakt en jouw merk in beweging <br /> brengt. Snel, krachitg en
+          energiek.
         </div>
-        <div className="w-40 h-40 bg-amber-200">in</div>
-        <div className="flex flex-col">
-          <div className="text-xl">
-            We stoppen niet bij mooie plaatjes en vette beelden. We maken het
-            meeetbaar. Zo weeet je precies wat werkt en wat niet . Nooit meer
-            content zonder straregie . Nooit meer conntent zonder strategie.
-            Nooit meer content zonder resultaat.{" "}
-          </div>
-          <div className="flex justify-between ">
-            <div className="border border-black rounded-xl">
-              <div className="">
-                leer ons kennen{" "}
-                <div className="btn btn-square rounded-xl  bg-black"></div>
-              </div>
+        <div className="flex justify-between">
+          {" "}
+          <div className="w-40 h-40 bg-amber-200">in</div>
+          <div className="flex max-w-[50%] flex-col">
+            <div className="text-xl">
+              We stoppen niet bij mooie plaatjes en vette beelden. We maken het
+              meeetbaar. Zo weeet je precies wat werkt en wat niet . Nooit meer
+              content zonder straregie . Nooit meer conntent zonder strategie.
+              Nooit meer content zonder resultaat.{" "}
             </div>
-            <div className="btn btn-square rounded-xl  border border-black"></div>
+            <FancyHoverButton
+              children="leer ons kennen"
+              className="mt-5 w-fit border border-black"
+              textcolor="text-black"
+              bgColor="bg-white"
+              iconColor="text-white"
+              iconboxColor="bg-black"
+              icon={<FaArrowRight />}
+            />
           </div>
         </div>
       </section>
       {/* Experttise */}
-      <section className="bg-white/50 p-5 rounded-4xl flex">
-        <div className="">
-          <div className="rounded-sm bg-amber-100 font-medium text-center w-fit px-4 ">
-            Expertise
-          </div>
-          <h1 className="text-[5rem] font-semibold">Social strategy</h1>
-          <h2 className="font-semibold">Slimme strategie. Sterke start.</h2>
-          <p>
-            We duiken diep in jouw merk, doelgroep en doelen. En vertalen data
-            naar een duidelijk plan met formats die écht impact maken. Zo weet
-            je precies waarom het werkt.
-          </p>
-          <div className="rounded-xl w-fit p-[3px] bg-amber-300 text-white font-medium">
-            <span className="px-3"> dkfjfj </span>
-            <div className="rounded-[30%] btn btn-square w-8 h-8 bg-amber-100 "></div>
-          </div>
-        </div>
-        <div className="">
-          {" "}
-          <h1 className="text-5xl font-bold text-[#e4dfd8]">01</h1>
-          <div className="w-60 h-70 rounded-3xl border-10 border-orange-600">
-            video
-          </div>
-        </div>
-      </section>
+      <section className="bg-white/50 p-5 rounded-4xl flex"></section>
+      <StackedCards></StackedCards>
       {/* Content dat scoort. */}
       <section>
-        <h1 className="text-[6rem] font-semibold">Content dat scoort.</h1>
-        <p>
-          We maken content die opvalt. Die blijft hangen. Die jouw doelgroep
-          raakt en jouw merk in beweging brengt. Snel, krachtig en energiek.
-        </p>
-        <div className="flex justify-between ">
-          <div className="border border-black rounded-xl">
-            <div className="">
-              leer ons kennen{" "}
-              <div className="btn btn-square rounded-xl  bg-black"></div>
-            </div>
-          </div>
-          <div className="btn btn-square rounded-xl  border border-black"></div>
+        <div className="lg:w-[50%] lg:px-29">
+          {" "}
+          <h1 className="text-[clamp(1rem,12vh,6rem)] font-semibold">
+            Content dat scoort.
+          </h1>
+          <p>
+            We maken content die opvalt. Die blijft hangen. Die jouw doelgroep
+            raakt en jouw merk in beweging brengt. Snel, krachtig en energiek.
+          </p>
+          <FancyHoverButton
+            children="leer ons kennen"
+            className="mt-5 w-fit border border-black"
+            textcolor="text-black"
+            bgColor="bg-none"
+            iconColor="text-white"
+            iconboxColor="bg-black"
+            icon={<FaArrowRight />}
+          />
         </div>
-        <div className="">
-          <div className="w-60 h-70 rounded-3xl border-10 border-orange-600">
-            video
-          </div>
+
+        <div className="flex gap-12 mt-10 justify-center">
+          {[0, 1, 2].map((item, i) => (
+            <VideoCard key={i} item={item} />
+          ))}
         </div>
       </section>
       {/* brand? */}
 
-      <section>
-        <h1 className="font-bold text-3xl ">These brands got hyped.</h1>
+      <section className="py-12 border-b border-slate-200 dark:border-slate-800 overflow-hidden">
+        <h1 className="font-bold text-3xl lg:text-6xl lg:px-20 lg:max-w-[50%]">
+          These brands got hyped.
+        </h1>
         <section className="py-12 border-b border-slate-200 dark:border-slate-800 overflow-hidden">
           <div className="max-w-7xl mx-auto px-4">
             <motion.div
-              className="flex w-max gap-1"
+              className="flex w-max gap-2"
               animate={{ x: ["0%", "-50%"] }}
               transition={{
                 ease: "linear",
@@ -116,11 +118,11 @@ const Home = () => {
               }}
             >
               {/* First group */}
-              <div className="flex items-center gap-1 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+              <div className="flex items-center gap-2 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
                 {logos.map((logo, i) => (
                   <div
                     key={i}
-                    className="flex items-center gap-1 h-30 w-30  border border-gray-700 rounded-lg"
+                    className="flex items-center gap-2 h-50 w-50  border border-gray-700 rounded-lg"
                   >
                     <span className="material-symbols-outlined text-3xl">
                       jhdff
@@ -133,11 +135,11 @@ const Home = () => {
               </div>
 
               {/* Duplicate group (important for seamless loop) */}
-              <div className="flex items-center gap-1 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+              <div className="flex items-center gap-2 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
                 {logos.map((logo, i) => (
                   <div
                     key={i + "copy"}
-                    className="flex items-center gap-1 h-30 w-30 border border-gray-700 rounded-lg"
+                    className="flex items-center gap-2 h-50 w-50 border border-gray-700 rounded-lg"
                   >
                     <span className="material-symbols-outlined text-3xl">
                       dffdf
@@ -154,16 +156,24 @@ const Home = () => {
       </section>
       {/* lets? */}
       <section>
-        <h1 className="text-5xl text-center p-5 font-bold">Let’s get hyped.</h1>
+        <h1 className="text-8xl text-center p-5 lg:pt-30 font-bold">
+          Let’s get hyped.
+        </h1>
         <div className="flex justify-center items-center gap-5">
-          <div className="rounded-xl w-fit p-[3px] bg-orange-500 text-white font-medium">
-            <span className="px-3"> dkfjfj </span>
-            <div className="rounded-[30%] btn btn-square w-8 h-8 bg-amber-100 "></div>
-          </div>
-          <div className="rounded-xl w-fit p-[3px] border border-black font-medium">
-            <span className="px-3"> dkfjfj </span>
-            <div className="rounded-[30%] btn btn-square w-8 h-8 bg-black "></div>
-          </div>
+          <FancyHoverButton
+            children="Mail ons direct"
+            textcolor="text-black"
+            bgColor="bg-white"
+            className="border border-black"
+            iconboxColor="bg-black"
+            iconColor="text-white"
+          ></FancyHoverButton>
+          <FancyHoverButton
+            children="Get result"
+            bgColor="bg-orange-500"
+            iconboxColor="bg-white"
+            iconColor="text-red-500"
+          ></FancyHoverButton>
         </div>
       </section>
 
